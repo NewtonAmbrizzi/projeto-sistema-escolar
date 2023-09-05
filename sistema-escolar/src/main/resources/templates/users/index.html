@@ -5,20 +5,20 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">Usuários</h1>
-    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-        For more information about DataTables, please visit the <a target="_blank"
-            href="https://datatables.net">official DataTables documentation</a>.</p>
+    
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-3" style="display: inline-flex; justify-content: space-between;">
             <h6 class="m-0 font-weight-bold text-primary">Lista de Usuários do sistema</h6>
+            <a href="users/new-user" class="btn btn-primary">Cadastrar Usuário</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Nome</th>
                             <th>E-mail</th>
                             <th>Tipo</th>
@@ -29,6 +29,7 @@
                     </thead>
                     <tfoot>
                         <tr>
+                            <th>ID</th>
                             <th>Nome</th>
                             <th>E-mail</th>
                             <th>Tipo</th>
@@ -38,10 +39,11 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>João</td>
-                            <td>joao@email.com</td>
-                            <td>administrador</td>
+                        <tr th:each="user : ${users}">
+                            <td th:text="${user.id}"></td>
+                            <td th:text="${user.name}"></td>
+                            <td th:text="${user.email}"></td>
+                            <td th:text="${user.type}"></td>
                             <td class="text-center"><a href="#" class="btn btn-secondary">Resetar senha</a></td>
                             <td class="text-center"><a href="#" class="btn btn-warning">Alterar</a></td>
                             <td class="text-center"><a href="#" class="btn btn-danger">Excluir</a></td>

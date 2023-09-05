@@ -1,0 +1,67 @@
+<div th:replace="~{shared/header}"></div>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Cadastro de Usuários</h1>
+
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4" style="padding-top: .75rem;">
+
+        <form class="container" style="display: inline-block;">
+            <div class="form-group row" style="display: flex; flex-direction: row; " >
+                <label for="name" class="col-sm-2 col-form-label">Nome</label>
+                <div class="col-sm-10">
+                    <input type="text" required class="form-control" id="name" name="name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">E-mail</label>
+                <div class="col-sm-10">
+                    <input type="email" required class="form-control" id="email" name="email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-sm-2 col-form-label">Senha</label>
+                <div class="col-sm-10">
+                    <input type="password" required class="form-control" id="password" name="password">
+                </div>
+            </div>
+            <fieldset class="form-group row">
+                <legend class="col-form-label col-sm-2 float-sm-left pt-0">Tipo de Cadastro</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" id="type1" value="professor">
+                        <label class="form-check-label" for="type1">
+                            Professor
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" id="type2" value="administrador">
+                        <label class="form-check-label" for="type2">
+                            Administrador
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="type" id="type3" value="responsavel" checked>
+                        <label class="form-check-label" for="type3">
+                            Responsável/Aluno
+                        </label>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="form-group row">
+                <div class="col-sm-10 text-center">
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+<div th:replace="~{shared/footer}"></div>
