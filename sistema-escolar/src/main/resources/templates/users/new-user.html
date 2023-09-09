@@ -4,29 +4,39 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Cadastro de Usuários</h1>
+    <h1 class="h3 mb-2 text-gray-800 text-center">Cadastro de Usuários</h1>
 
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4" style="padding-top: .75rem;">
+    <div class="card shadow mb-4" style="padding-top: .75rem; max-width: 80%; margin: 0 auto;">
 
-        <form class="container" style="display: inline-block;">
+        <form class="container" style="display: inline-block;" action="/users/create" method="post" onsubmit="return validateForm()" >
             <div class="form-group row" style="display: flex; flex-direction: row; " >
                 <label for="name" class="col-sm-2 col-form-label">Nome</label>
                 <div class="col-sm-10">
-                    <input type="text" required class="form-control" id="name" name="name">
+                    <input type="text" required class="form-control" id="name" name="name" placeholder="Digite o nome" onkeyup="countNameCharacters()">
                 </div>
+                <div id="countName" style="font-size: .8rem; color: #990000; margin: 0.4rem auto 0 auto;"></div>
             </div>
             <div class="form-group row">
                 <label for="email" class="col-sm-2 col-form-label">E-mail</label>
                 <div class="col-sm-10">
-                    <input type="email" required class="form-control" id="email" name="email">
+                    <input type="email" required class="form-control" id="email" name="email" placeholder="Digite um e-mail" onkeyup="validateEmail()">
                 </div>
+                <div id="validateEmail" style="font-size: .8rem; color: #990000; margin: 0.4rem auto 0 auto;"></div>
             </div>
             <div class="form-group row">
                 <label for="password" class="col-sm-2 col-form-label">Senha</label>
                 <div class="col-sm-10">
-                    <input type="password" required class="form-control" id="password" name="password">
+                    <input type="password" required class="form-control" id="password" name="password" placeholder="Digite uma senha" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}" title="A senha deve possuir ao menos um número, uma letra maiúscula, uma letra minúscula e possuir de 6 a 20 caracteres" onkeyup="validatePassword()">
+                </div>
+                <div style="font-size: .8rem; margin: 0.4rem auto 0 auto;">
+                    <ul>
+                        <li id="lowChar">A senha deve possuir ao menos uma letra minúscula</li>
+                        <li id="upChar">A senha deve possuir ao menos uma letra maiúscula</li>
+                        <li id="num">A senha deve possuir ao menos um número</li>
+                        <li id="passwordLength">A senha de possuir entre 6 e 20 caracteres</li>
+                    </ul>
                 </div>
             </div>
             <fieldset class="form-group row">
@@ -52,9 +62,9 @@
                     </div>
                 </div>
             </fieldset>
-            <div class="form-group row">
-                <div class="col-sm-10 text-center">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+            <div class="form-group row text-center">
+                <div class="col-sm-10 ">
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
                 </div>
             </div>
         </form>

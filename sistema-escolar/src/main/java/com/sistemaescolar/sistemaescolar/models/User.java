@@ -28,7 +28,7 @@ public class User {
     private String password;
 
     @Column(nullable=false, length=30)
-    private String status;
+    private String status = "Ativo";
 
     public Integer getId() {
         return id;
