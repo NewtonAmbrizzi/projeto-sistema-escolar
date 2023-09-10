@@ -26,6 +26,13 @@ public class UsersController {
         return "users/index";
     }
 
+    @GetMapping(value = {"/users/inactives"})
+    public String inactive(Model model){
+        List<User> users = repository.findByStatus("Inativo");
+        model.addAttribute("users", users);
+        return "users/index";
+    }
+
     @GetMapping(value = {"/users/new-user"})
     public String newUser(){
         
