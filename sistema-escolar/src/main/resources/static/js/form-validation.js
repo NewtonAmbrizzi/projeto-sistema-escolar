@@ -1,7 +1,12 @@
-//const idList = document.getElementsByClassName("deleteUser");
+document.getElementById("navUsers").addEventListener("click", showUsersNav(), false);
 
-//document.getElementById("delete").addEventListener("click", deleteUser, false);
-
+function showUsersNav() {
+    if(document.getElementById("showUsersNav").hasAttribute("style")){
+        document.getElementById("showUsersNav").removeAttribute("style");
+    } else {
+        document.getElementById("showUsersNav").setAttribute("style","none");
+    }
+}
 
 function countNameCharacters() {
 
