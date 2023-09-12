@@ -1,6 +1,7 @@
 package com.sistemaescolar.sistemaescolar.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,6 +44,13 @@ public class UsersController {
     public String create(User user){
         repository.save(user);
         return "redirect:/users";
+    }
+
+    @GetMapping("/users/edit/{id}")
+    public String edit(@PathVariable("id") Integer id, Model model){
+        Optional<User> user = repository.findById(id);
+        model.addAttribute("user", user);
+        return "users/edit";
     }
 
     @DeleteMapping(value = {"/users/delete/{id}"})
