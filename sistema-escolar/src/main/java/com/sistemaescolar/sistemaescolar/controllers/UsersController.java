@@ -48,6 +48,12 @@ public class UsersController {
         return "redirect:/users";
     }
 
+    @PostMapping("/users/change-status/{id}")
+    public String changeStatus(@PathVariable("id") Integer id){
+        usersService.changeStatus(id);
+        return "redirect:/users";
+    }
+
     @GetMapping("/users/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model){
         Optional<User> user = repository.findById(id);

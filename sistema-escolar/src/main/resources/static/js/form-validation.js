@@ -85,5 +85,12 @@ function deleteUser(id) {
     xmlhttp.send();
     window.location.href = "http://localhost:8080/users";
 
-    //fetch('/users/delete/' + id, { method: 'DELETE'})
+}
+
+function changeUserStatus(id) {
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", "http://localhost:8080/users/reactivate/" + id)
+    xmlhttp.send();
+    window.location.href = "http://localhost:8080/users";
+
 }

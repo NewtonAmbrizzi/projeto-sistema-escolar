@@ -19,5 +19,10 @@ public class UsersService {
     public List<User> findUsersByStatus(String status) {
         return usersRepository.findByStatus(status);
     }
+
+    @Transactional
+    public void changeStatus(Integer id) {
+        
+    }
     
 }

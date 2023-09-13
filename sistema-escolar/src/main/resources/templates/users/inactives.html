@@ -9,9 +9,8 @@
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3" style="display: inline-flex; justify-content: space-between;">
-            <h6 class="m-0 font-weight-bold text-primary">Lista de Usuários Ativos do sistema</h6>
-            <a href="users/new-user" class="btn btn-primary">Cadastrar Usuário</a>
+        <div class="card-header py-3" style="display: inline-flex; justify-content: flex-start;">
+            <h6 class="m-0 font-weight-bold text-primary">Lista de Usuários INATIVOS do sistema</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -42,7 +41,7 @@
                             <td th:text="${user.name}"></td>
                             <td th:text="${user.email}"></td>
                             <td th:text="${user.type}"></td>
-                            <td class="text-center"><a href="" class="btn btn-warning">Alterar</a></td>
+                            <td class="text-center"><a href="" class="btn btn-warning" th:href="@{/users/reactivate/{id}(id=${user.id})}">Reativar</a></td>
                             <td class="text-center"><a href="" class="btn btn-danger deleteUser" th:id="'delete' + ${user.id}" th:onClick="deleteUser([[${user.id}]])">Excluir</a></td>
                         </tr>
                         
