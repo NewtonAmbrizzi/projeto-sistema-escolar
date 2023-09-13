@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sistemaescolar.sistemaescolar.models.User;
 import com.sistemaescolar.sistemaescolar.repositories.UsersRepository;
+import com.sistemaescolar.sistemaescolar.services.UsersService;
 
 @Controller
 public class UsersController {
@@ -20,18 +21,19 @@ public class UsersController {
     @Autowired
     private UsersRepository repository;
 
+    @Autowired
+    private UsersService usersService;
+
     @GetMapping(value = {"/users"})
     public String index(Model model){
-        List<User> users = repository.findByStatus("Ativo");
-        model.addAttribute("users", users);
+        model.addAttribute("users", usersService.findUsersByStatus("Ativo"));
         return "users/index";
     }
 
     @GetMapping(value = {"/users/inactives"})
     public String inactive(Model model){
-        List<User> users = repository.findByStatus("Inativo");
-        model.addAttribute("users", users);
-        return "users/index";
+        model.addAttribute("users", usersService.findUsersByStatus("Inativo"));
+        return "users/inactives";
     }
 
     @GetMapping(value = {"/users/new-user"})
@@ -49,8 +51,12 @@ public class UsersController {
     @GetMapping("/users/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model){
         Optional<User> user = repository.findById(id);
-        model.addAttribute("user", user);
-        return "users/edit";
+        model.addAttribute("user", user.get());
+        if (user.get().getStatus().toString().equalsIgnoreCase("ativo")){
+            return "users/edit";
+        } else {
+            return "redirect:/users/inactives";
+        }
     }
 
     @DeleteMapping(value = {"/users/delete/{id}"})
