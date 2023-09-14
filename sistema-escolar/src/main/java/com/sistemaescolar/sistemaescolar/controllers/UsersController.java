@@ -5,19 +5,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sistemaescolar.sistemaescolar.models.User;
 import com.sistemaescolar.sistemaescolar.repositories.UsersRepository;
 import com.sistemaescolar.sistemaescolar.services.UsersService;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 public class UsersController {
@@ -30,7 +25,7 @@ public class UsersController {
     @Autowired
     private UsersService usersService;
 
-    @GetMapping(value = { "/users" })
+    @GetMapping(value = { "/users","/users/" })
     public String index(Model model) {
         model.addAttribute("users", usersService.findUsersByStatus("Ativo"));
         return "users/index";
@@ -62,9 +57,10 @@ public class UsersController {
 
     @GetMapping("/users/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model) {
-        Optional<User> user = repository.findById(id);
-        model.addAttribute("user", user.get());
         try {
+            Optional<User> user = repository.findById(id);
+            model.addAttribute("user", user.get());
+        
             if (user.get().getStatus().toString().equalsIgnoreCase("ativo")) {
                 return "users/edit";
             } else {
