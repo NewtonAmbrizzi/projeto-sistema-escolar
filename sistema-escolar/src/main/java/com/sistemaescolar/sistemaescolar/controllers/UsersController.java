@@ -79,7 +79,7 @@ public class UsersController {
 
     @PostMapping(value = { "/users/delete/{id}" })
     public String delete(@PathVariable("id") Integer id) {
-        repository.deleteById(id);
+        usersService.deleteUser(id);
         return "redirect:/users/inactives";
     }
 }
