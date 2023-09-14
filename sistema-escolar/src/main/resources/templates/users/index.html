@@ -43,7 +43,7 @@
                             <td th:text="${user.email}"></td>
                             <td th:text="${user.type}"></td>
                             <td class="text-center"><a href="" class="btn btn-warning" th:href="@{/users/edit/{id}(id=${user.id})}">Alterar</a></td>
-                            <td class="text-center"><a href="" class="btn btn-danger deleteUser" th:id="'delete' + ${user.id}" th:onClick="deleteUser([[${user.id}]])">Excluir</a></td>
+                            <td class="text-center"><form method="POST" th:action="@{/users/change-status/{id}(id=${user.id})}" onsubmit="confirm('Deseja desativar esse usuário?')"><button type="submit" name="reactivate" value="reactivate" class="btn btn-danger">Desativar</button></form></td>
                         </tr>
                         
                     </tbody>

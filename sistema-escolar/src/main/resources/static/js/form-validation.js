@@ -1,13 +1,3 @@
-document.getElementById("navUsers").addEventListener("click", showUsersNav(), false);
-
-function showUsersNav() {
-    if(document.getElementById("showUsersNav").hasAttribute("style")){
-        document.getElementById("showUsersNav").removeAttribute("style");
-    } else {
-        document.getElementById("showUsersNav").setAttribute("style","none");
-    }
-}
-
 function countNameCharacters() {
 
     let name = document.getElementById("name").value;
@@ -79,18 +69,3 @@ function validateForm() {
 
 }
 
-function deleteUser(id) {
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("DELETE", "http://localhost:8080/users/delete/" + id)
-    xmlhttp.send();
-    window.location.href = "http://localhost:8080/users";
-
-}
-
-function changeUserStatus(id) {
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST", "http://localhost:8080/users/reactivate/" + id)
-    xmlhttp.send();
-    window.location.href = "http://localhost:8080/users";
-
-}

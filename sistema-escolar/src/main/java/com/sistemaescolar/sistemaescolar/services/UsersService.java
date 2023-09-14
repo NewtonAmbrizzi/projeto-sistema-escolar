@@ -22,7 +22,26 @@ public class UsersService {
 
     @Transactional
     public void changeStatus(Integer id) {
+        User user = usersRepository.findById(id).get();
+        if (user.getStatus().equalsIgnoreCase("ativo")){
+            user.setStatus("inativo");
+        } else {
+            user.setStatus("ativo");
+        }
         
+        usersRepository.save(user);
+    }
+
+    @Transactional
+    public void createUser(User user) {
+        usersRepository.save(user);
+    }
+
+    @Transactional
+    public void updateUser(Integer id, User user){
+       if (usersRepository.existsById(id)) {
+        usersRepository.save(user);
+       } 
     }
     
 }
