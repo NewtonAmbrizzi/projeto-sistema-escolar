@@ -33,8 +33,13 @@ public class UsersService {
     }
 
     @Transactional
-    public void createUser(User user) {
-        usersRepository.save(user);
+    public boolean createUser(User user) {
+        if (usersRepository.existByEmail(user.getEmail())) {
+            return false;
+        } else {
+            usersRepository.save(user);
+            return true;
+        }
     }
 
     @Transactional
