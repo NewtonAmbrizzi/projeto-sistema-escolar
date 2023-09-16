@@ -45,8 +45,11 @@ public class UsersController {
 
     @PostMapping("/users/create")
     public String create(User user) {
-        usersService.createUser(user);
+        if (usersService.createUser(user)){
         return REDIRECT_USERS;
+        } else {
+            return "/users/new-user";
+        }
     }
 
     @PostMapping("/users/change-status/{id}")

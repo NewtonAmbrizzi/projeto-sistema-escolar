@@ -10,6 +10,6 @@ public interface UsersRepository extends JpaRepository<User, Integer> {
 
     List<User> findByStatus(String status);
 
-    Boolean existByEmail(String email);
+    Boolean existsByEmail(String email);
     
 }

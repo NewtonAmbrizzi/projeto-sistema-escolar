@@ -34,7 +34,7 @@ public class UsersService {
 
     @Transactional
     public boolean createUser(User user) {
-        if (usersRepository.existByEmail(user.getEmail())) {
+        if (usersRepository.existsByEmail(user.getEmail())) {
             return false;
         } else {
             usersRepository.save(user);
