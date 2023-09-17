@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sistemaescolar.sistemaescolar.models.User;
-import com.sistemaescolar.sistemaescolar.repositories.UsersRepository;
 import com.sistemaescolar.sistemaescolar.services.LoginService;
 
 @Controller
@@ -23,6 +22,10 @@ public class LoginController {
     
     @PostMapping(value = {"/logar"})
     public String logar(Model model, User user, String remember){
-        return "login/index";
+        if (login.login(user)){
+            return "redirect:/";
+        } else {
+            return "redirect:/login";
+        }        
     }
 }
