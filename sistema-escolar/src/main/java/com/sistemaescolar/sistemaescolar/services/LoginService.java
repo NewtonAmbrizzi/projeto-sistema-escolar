@@ -17,9 +17,10 @@ public class LoginService {
     public Boolean login(User user) {
         if (userRepository.existsByEmailAndPassword(user.getEmail(), user.getPassword())) {
             return true;
-        } else {
-            return false;
-        }
+        } 
+        
+        return false;
+        
     }
 
 }
