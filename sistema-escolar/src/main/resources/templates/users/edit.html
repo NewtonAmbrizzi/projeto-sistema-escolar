@@ -42,23 +42,9 @@
             <fieldset class="form-group row">
                 <legend class="col-form-label col-sm-2 float-sm-left pt-0">Tipo de Cadastro</legend>
                 <div class="col-sm-10">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="type" id="type1" value="professor" th:checked="${user.type}=='professor'">
-                        <label class="form-check-label" for="type1">
-                            Professor
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="type" id="type2" value="administrador" th:checked="${user.type}=='administrador'">
-                        <label class="form-check-label" for="type2">
-                            Administrador
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="type" id="type3" value="responsavel" th:checked="${user.type}=='responsavel'">
-                        <label class="form-check-label" for="type3">
-                            Responsável/Aluno
-                        </label>
+                    <div class="form-check" th:each="roleOption : ${T(com.sistemaescolar.sistemaescolar.models.UserRole).values()}">
+                        <input class="form-check-input" type="radio" name="role" th:id="${roleOption.role} + '_radio'" th:value="${roleOption}" th:checked="${user.role}==${roleOption}">
+                        <label class="form-check-label" for="${roleOption.role} + '_radio'"></label>
                     </div>
                 </div>
             </fieldset>

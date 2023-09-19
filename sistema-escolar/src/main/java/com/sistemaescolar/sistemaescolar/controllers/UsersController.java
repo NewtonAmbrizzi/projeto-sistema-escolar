@@ -39,7 +39,7 @@ public class UsersController {
 
     @GetMapping(value = { "/users/new-user" })
     public String newUser() {
-
+        
         return "users/new-user";
     }
 
@@ -53,13 +53,13 @@ public class UsersController {
     }
 
     @PostMapping("/users/change-status/{id}")
-    public ModelAndView changeStatus(@PathVariable("id") Integer id) {
+    public ModelAndView changeStatus(@PathVariable("id") String id) {
         usersService.changeStatus(id);
         return new ModelAndView(REDIRECT_USERS);
     }
 
     @GetMapping("/users/edit/{id}")
-    public String edit(@PathVariable("id") Integer id, Model model) {
+    public String edit(@PathVariable("id") String id, Model model) {
         try {
             Optional<User> user = repository.findById(id);
             model.addAttribute("user", user.get());
