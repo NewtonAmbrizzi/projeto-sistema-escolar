@@ -64,7 +64,7 @@ public class UsersController {
             Optional<User> user = repository.findById(id);
             model.addAttribute("user", user.get());
         
-            if (user.get().getStatus().toString().equalsIgnoreCase("ativo")) {
+            if (user.get().getStatus().equalsIgnoreCase("ativo")) {
                 return "users/edit";
             } else {
                 return REDIRECT_USERS;
@@ -75,13 +75,13 @@ public class UsersController {
     }
 
     @PostMapping("users/update/{id}")
-    public ModelAndView updateUser(@PathVariable("id") Integer id, User user) {
+    public ModelAndView updateUser(@PathVariable("id") String id, User user) {
         usersService.updateUser(id, user);
         return new ModelAndView(REDIRECT_USERS);
     }
 
     @PostMapping(value = { "/users/delete/{id}" })
-    public String delete(@PathVariable("id") Integer id) {
+    public String delete(@PathVariable("id") String id) {
         usersService.deleteUser(id);
         return "redirect:/users/inactives";
     }

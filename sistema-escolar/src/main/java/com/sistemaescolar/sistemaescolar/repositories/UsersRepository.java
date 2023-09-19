@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.sistemaescolar.sistemaescolar.models.User;
 
-public interface UsersRepository extends JpaRepository<User, Integer> {
+public interface UsersRepository extends JpaRepository<User, String> {
 
     List<User> findByStatus(String status);
 

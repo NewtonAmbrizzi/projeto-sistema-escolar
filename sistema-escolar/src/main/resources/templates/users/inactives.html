@@ -17,7 +17,6 @@
                 <table class="table table-striped" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nome</th>
                             <th>E-mail</th>
                             <th>Tipo</th>
@@ -27,7 +26,6 @@
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>ID</th>
                             <th>Nome</th>
                             <th>E-mail</th>
                             <th>Tipo</th>
@@ -37,10 +35,9 @@
                     </tfoot>
                     <tbody>
                         <tr th:each="user : ${users}">
-                            <td th:text="${user.id}" id="userId"></td>
                             <td th:text="${user.name}"></td>
                             <td th:text="${user.email}"></td>
-                            <td th:text="${user.type}"></td>
+                            <td th:text="${user.role}"></td>
                             <td class="text-center">
                                 <form method="POST" th:action="@{/users/change-status/{id}(id=${user.id})}">
                                     <button type="submit" name="reactivate" value="reactivate" class="btn btn-warning">Reativar</button>
